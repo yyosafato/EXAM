@@ -1,0 +1,40 @@
+
+Yolatl Yosafat Hernández Vargas
+
+1.- What is Data Engineering?
+Is the process to create data pipelines or ETLs using different tools, technologies or platforms such cloud base services to integrate different type of datasources into a central repository of information usually a datawarehouse. This information will be used usually for Data Scientis or BI analyst to exploit information and add value to the company using the existing and  historical data of all transactions of the business areas of the company.
+
+The central repository is not limited to datawarehouse but it can also be data lakes or data marts. The datasources can be relational data bases and non relational databases, APIs, plain documents and files or even audio, images or video files.
+
+2.- What are the main responsibilities of a Data Engineer?
+Create pipelines and ETl´s, make sure the data in the datawarehouse is consistent and quality tested, work with the business stakeholders and users to have consistent understanding of the data model and if necessary propose data model design. In my case create also reports and dashboard for data analytics using Bi tools such as Tableau and Spotfire. 
+
+3.- Explain ETL
+ETL  is Extract, transform and load, which are the three main step in creating a data pipeline to move data from the datasource to the final destination, this concept is not attached to any tecgnology, tool or methodology, in some case the Transformation  step could include also cleaning, profiling, and quality steps. Also there is another concept called ELT which stand for Extract, Load and Transform in this case all the transformations take place in the target destination usually the datawarehouse.
+
+4.- How you build a Data Pipeline?. Feel free to explain an fictional example.
+I build pipelines using AWs Glue , whith AWSStepFunctions and Event Bridge Rules. Usuallt with 3 steps one for exraction another for transformations and the third one for loading the data into snowflake. All the steps are written in Python and use a combination of lirbraries from AWS Glue and PySpark.
+
+For example. Suposse we need to ingest an API with Json documents as reponse, so in the first glue step I write the Spark code to ingest the document and loadedn into a bucket in S3. Innthe second steop I transform the JSON Dpocuments loaded in S3 so they can be relationalized into a table. Finally in the third step I load the data of these relationalized files into Snowflake.
+
+5.- In a RDBMS Joins are your friends.  Explain Why.
+Joins allows you to extract data from several tables at the same time in the same sql query, they also have better performance than subqueries.
+
+6.- What are the main features of a production pipeline.
+It should be roughly tested. It should be 100% recoverable from errors. In the deployment process it must have the feature of rolling-back in case of any error. And of course it should adhere to business requirements and needs. 
+
+7.- How do you monitor this data pipelines?
+It depends on the underlying infrastructure for instance in AWS there are tools such as X-Ray, Cloud Watch among others to monitor pipelines. In an Informatica environment there is monitoring services to log the pipelines status. 
+
+8.- Give us a situation where you decide to use a NoSQL database instead of a relational database. Why did you do so?
+When I had several and very data sources types, this data was not structured and the growing in size of this data was not predictable,so NoSQL is great because of their flexibility and power in ambigous data type situations. 
+
+9.- What are the non technical soft skills that are most valuable for data engineers?
+They have to have great communication skills to speak and have meetings with all the business areas to understand the business rules so the Data Engineer can build consistent data models and really add value to the company and its users. 
+
+10.- Suponse you have to design an Anomaly Detection Solution for a client in real or near real time. A platform for anomaly detection is about finding patterns of interest (outliers, exceptions, peculiarities, etc.) that deviate from expected behavior within dataset(s). Given this definition, it’s worth noting that anomaly detection is, therefore, very similar to noise removal and novelty detection. Though patterns detected with anomaly detection are actually of interest, noise detection can be slightly different because the sole purpose of detection is removing those anomalies - or noise - from data.
+Which technologies do you apply for real time ingestion and stream for an anomaly detection system? Diagram the solution in AWS or GCP Infrastructure.
+I would use AWS Sage Maker built-in algortihms for anomaly detection for instance I could use RCF (Random Cut Forest algoritm).
+
+11.- Differences between OLAP and OLTP Systems.
+OLTP is transactional and OLAP is analytical. OLTP is all the operational transactioal systems that make the business possible on a daily basis while OLAP is made for analysis, reporting, forecasting and building BI systems to develop strategies which will take the company to acomplish their goals. OLTP are usually normalized while OLAP are not.

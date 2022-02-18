@@ -1,0 +1,34 @@
+{
+    "expression": "cron(0 12 ? * * *)",
+    "sfn_id": "${workflows["self"]["corva_glue_ingest"]}",
+    "is_enabled": true,
+    "input": {
+        "SkipIngestion": false,
+        "SkipGlueUpload": false,
+        "SkipSnowflakeProcess": false,
+        "Config": {
+            "Glue": {
+                "MaxCapacity": 20,
+                "Timeout": 7200,
+                "DB": "MY_GLUE"
+            },
+            "Aws": {
+                "REGION": "us-east-1",
+                "LANDING": "s3://raw",
+                "PREPARED": "s3://landing"
+            },
+            "Json": {
+                "TABLES": "CUSTOMER, ITEMS, ITEMS_BOUGHT",
+                "COLLECTIONS" : "CUSTOMER, ITEMS, ITEMS_BOUGHT",
+            },
+            "Snowflake": {
+                "USER": "username",
+                "PASSWORD": "password",
+                "DATABASE": "MY_DB",
+                "WAREHOUSE": "VWH_TRANSFORMATIONS",
+                "SCHEMA": "STAGING",
+                "URL": "/snowflake/url"
+            },
+        }
+    }
+}

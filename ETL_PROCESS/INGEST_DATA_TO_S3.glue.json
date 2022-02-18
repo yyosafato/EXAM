@@ -1,0 +1,19 @@
+{
+    "job": {
+        "glue_version": "2.0",
+        "worker_type": "G.1X",
+        "connections": ["glue-connection"],
+        "number_of_workers": "5",
+        "default_arguments": {
+            "--extra-jars": "s3://${artifact_bucket}/libs/jdbc/ngdbc.jar,s3://${artifact_bucket}/libs/jdbc/ojdbc14.jar"
+        },
+        "tags": {
+            "ApplicationRole": "ingestion"
+        },
+        "command": {
+            "type": "glueetl",
+            "python_version": "3",
+            "job_language": "python"
+        }
+    }
+}
